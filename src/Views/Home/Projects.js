@@ -48,7 +48,6 @@ const Projects = () => {
       genres: "Android/ iOS App",
       year: "2021",
     },
-    ,
   ];
 
   const [open, setOpen] = useState(false);
