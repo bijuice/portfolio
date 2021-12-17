@@ -26,44 +26,29 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "Vue",
+      title: "Bijuiceflix",
       quantity: 1,
       imageURL: "../../assets/imagereact.png",
-      genres: "Android/ iOS App",
-      year: "2020",
+      genres: "Web App",
+      year: "2021",
     },
     {
       id: 3,
-      title: "Flutter",
+      title: "Hisa Web App",
       quantity: 1,
       imageURL: "../../assets/images/react.png",
-      genres: "Android/ iOS App",
-      year: "2020",
+      genres: "Web App",
+      year: "2021",
     },
     {
       id: 4,
-      title: "Pentesting",
+      title: "GoKenya",
       quantity: 1,
       imageURL: "../../assets/images/react.png",
       genres: "Android/ iOS App",
-      year: "2020",
+      year: "2021",
     },
-    {
-      id: 5,
-      title: "Linux",
-      quantity: 1,
-      imageURL: "../../assets/images/react.png",
-      genres: "Android/ iOS App",
-      year: "2020",
-    },
-    {
-      id: 6,
-      title: "Firebase",
-      quantity: 1,
-      imageURL: "../../assets/images/react.png",
-      genres: "Android/ iOS App",
-      year: "2020",
-    },
+    ,
   ];
 
   const [open, setOpen] = useState(false);
@@ -82,9 +67,6 @@ const Projects = () => {
         spacing={28}
         sx={{
           pt: 4,
-          width: "100%",
-          flex: 20,
-          overflowX: "visible",
         }}
       >
         {skills.map((skill) => (

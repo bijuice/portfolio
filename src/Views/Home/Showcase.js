@@ -7,7 +7,6 @@ import flutter from "../../assets/images/flutter.svg";
 import firebase from "../../assets/images/firebase.svg";
 import figma from "../../assets/images/figma.svg";
 import DetailsModal from "../Components/DetailsModal";
-import Zoom from "@mui/material/Zoom";
 
 const Showcase = () => {
   const [open, setOpen] = useState(false);

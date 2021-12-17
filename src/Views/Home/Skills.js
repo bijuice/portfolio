@@ -1,4 +1,4 @@
-import { Typography, Card, Grid, Box } from "@mui/material";
+import { Typography, Card, Grid, Box, Stack } from "@mui/material";
 import "./Home.css";
 
 const Skills = () => {
@@ -45,9 +45,10 @@ const Skills = () => {
     <Box sx={{ ml: 5, pt: 26 }}>
       <Typography variant="h5">Most used skills</Typography>
 
-      <Grid
+      <Stack
         container
         spacing={28}
+        direction="row"
         sx={{
           pt: 4,
           width: "100%",
@@ -105,7 +106,7 @@ const Skills = () => {
             </Card>
           </Grid>
         ))}
-      </Grid>
+      </Stack>
     </Box>
   );
 };
