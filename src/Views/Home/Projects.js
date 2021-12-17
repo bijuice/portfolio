@@ -5,6 +5,7 @@ import {
   Box,
   IconButton,
   Tooltip,
+  Stack,
 } from "@mui/material";
 import { Link, InfoOutlined } from "@mui/icons-material";
 import "./Home.css";
@@ -56,25 +57,28 @@ const Projects = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <Box sx={{ ml: 5 }}>
+    <Box sx={{ ml: 5, height: 275 }}>
       <DetailsModal open={open} handleClose={handleClose} />
 
       <Typography variant="h5">Featured Projects</Typography>
 
-      <Grid
-        container
-        spacing={28}
+      <Stack
+        direction="row"
+        spacing={"16%"}
         sx={{
           pt: 4,
+          maxWidth: "100%",
+          display: "flex",
         }}
       >
-        {skills.map((skill) => (
+        {skills.map((skill, index) => (
           <Grid item key={skill.id}>
             <Card
               onClick={handleOpen}
               sx={{
-                height: 125,
-                width: 210,
+                height: 135,
+                width: "15%",
+                minWidth: "13%",
                 borderRadius: 1,
                 boxShadow: 20,
                 transition: "0.4s",
@@ -82,13 +86,16 @@ const Projects = () => {
                 mr: 2,
                 minWidth: 100,
                 position: "absolute",
-                color: "0A0A0A",
 
                 "&:hover": {
                   height: 300,
-                  width: 325,
+                  width: "23%",
                   zIndex: 1,
                   position: "absolute",
+                  transform:
+                    index === 0
+                      ? "translate(-8%, -30%)"
+                      : "translate(-10%, -30%)",
                 },
                 "&:hover #project-title": {
                   display: "block",
@@ -135,7 +142,7 @@ const Projects = () => {
                   <Grid item>
                     <Box sx={{ display: "flex" }}>
                       <Tooltip title="Visit">
-                        <IconButton>
+                        <IconButton sx={{ zIndex: 1 }}>
                           <Link />
                         </IconButton>
                       </Tooltip>
@@ -185,7 +192,7 @@ const Projects = () => {
             </Card>
           </Grid>
         ))}
-      </Grid>
+      </Stack>
     </Box>
   );
 };
