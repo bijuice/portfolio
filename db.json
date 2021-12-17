@@ -1,0 +1,28 @@
+{
+  "skills": [
+    {
+      "id": 1,
+      "title": "React",
+      "quantity": 1,
+      "imageURL": "../../assets/images/react.png"
+    },
+    {
+      "id": 2,
+      "title": "Vue",
+      "quantity": 1,
+      "imageURL": "../../assets/imagereact.png"
+    },
+    {
+      "id": 3,
+      "title": "Flutter",
+      "quantity": 1,
+      "imageURL": "../../assets/images/react.png"
+    },
+    {
+      "id": 4,
+      "title": "Linux",
+      "quantity": 1,
+      "imageURL": "../../assets/images/react.png"
+    }
+  ]
+}

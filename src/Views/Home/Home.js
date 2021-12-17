@@ -1,6 +1,8 @@
 import Navbar from "./Navbar";
 import "./Home.css";
 import Showcase from "./Showcase";
+import Skills from "./Skills";
+import Projects from "./Projects.js";
 
 const Home = () => {
   return (
@@ -10,7 +12,10 @@ const Home = () => {
         <Showcase />
       </div>
 
-      <div className="mid"></div>
+      <div className="mid">
+        <Projects />
+        <Skills />
+      </div>
     </div>
   );
 };

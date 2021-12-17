@@ -1,5 +1,5 @@
 .top {
-  height: 90vh;
+  height: 85vh;
   width: 100%;
   background-size: 100% 100%;
   postion: relative;
@@ -13,5 +13,6 @@
 
 .mid {
   height: 150vh;
+  width: 100%;
   background-color: black;
 }

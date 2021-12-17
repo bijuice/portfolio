@@ -2,11 +2,13 @@ import "./Home.css";
 import { useState } from "react";
 import { Container, Typography, Tooltip, Grid, Button } from "@mui/material";
 import { PlayArrow, InfoOutlined } from "@mui/icons-material";
-import culturecapture from "../../assets/culture-capture.png";
-import flutter from "../../assets/flutter.svg";
-import firebase from "../../assets/firebase.svg";
-import figma from "../../assets/figma.svg";
+import culturecapture from "../../assets/images/culture-capture.png";
+import flutter from "../../assets/images/flutter.svg";
+import firebase from "../../assets/images/firebase.svg";
+import figma from "../../assets/images/figma.svg";
 import DetailsModal from "../Components/DetailsModal";
+import Zoom from "@mui/material/Zoom";
+
 const Showcase = () => {
   const [open, setOpen] = useState(false);
 
@@ -16,7 +18,7 @@ const Showcase = () => {
   return (
     <Container
       sx={{
-        ml: 5,
+        ml: 0,
         pt: 20,
       }}
     >

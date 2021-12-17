@@ -10,8 +10,8 @@ import {
   MenuItem,
 } from "@mui/material";
 import { GitHub, LinkedIn } from "@mui/icons-material";
-import logo from "../../assets/logo.png";
-import avatar from "../../assets/avatar.jpg";
+import logo from "../../assets/images/logo.png";
+import avatar from "../../assets/images/avatar.jpg";
 
 const Navbar = () => {
   const [navbarColor, setNavbarColor] = useState("transparent");
