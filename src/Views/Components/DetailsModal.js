@@ -26,7 +26,6 @@ const style = {
   boxShadow: 24,
   overflowY: "scroll",
   borderRadius: 2,
-  minWidth: 700,
 };
 
 const DetailsModal = (props) => {

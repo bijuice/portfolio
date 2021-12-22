@@ -12,68 +12,57 @@ import "./Home.css";
 import flutter from "../../assets/images/flutter.svg";
 import firebase from "../../assets/images/firebase.svg";
 import figma from "../../assets/images/figma.svg";
-import react from "../../assets/images/react.svg";
-import material from "../../assets/images/material.svg";
-import gokenya from "../../assets/images/gokenya.png";
-import bijuiceflix from "../../assets/images/bijuiceflix.png";
-import hisa from "../../assets/images/hisa.png";
 import culturecapture from "../../assets/images/culturecapture.png";
+import hisa from "../../assets/images/hisa.png";
+import vue from "../../assets/images/vue.svg";
+import laravel from "../../assets/images/laravel.svg";
+import bootstrap from "../../assets/images/bootstrap.svg";
 import DetailsModal from "../Components/DetailsModal";
 import { useState } from "react";
 
-const Projects = () => {
+const Experience = () => {
   const skills = [
     {
       id: 1,
-      title: "Culture Capture Mobile App",
-      quantity: 1,
-      imageURL: culturecapture,
-      genres: "Android/ iOS App",
-      year: "2020",
+      title: "Hisa",
+      imageURL: hisa,
+      year: "2021",
+      duration: "7 months",
+      link: "https://hisa.co/",
       tools: [
-        { title: "Flutter", icon: flutter },
-        { title: "Firebase", icon: firebase },
-        { title: "Figma", icon: figma },
+        { title: "Vue JS", icon: vue },
+        { title: "Bootstrap", icon: bootstrap },
+        { title: "Laravel", icon: laravel },
       ],
     },
     {
       id: 2,
-      title: "Bijuiceflix",
-      quantity: 1,
-      imageURL: bijuiceflix,
-      genres: "Web App",
-      year: "2021",
+      title: "Culture Capture",
+      imageURL: culturecapture,
+      year: "2020",
+      duration: "1 year",
+      link: "https://hisa.co/",
       tools: [
-        { title: "React", icon: react },
-        { title: "Material", icon: material },
+        { title: "Flutter", icon: flutter },
+        { title: "Firebase", icon: firebase },
         { title: "Figma", icon: figma },
       ],
     },
     {
       id: 3,
-      title: "Hisa Web App",
-      quantity: 1,
-      imageURL: hisa,
-      genres: "Web App",
+      title: "KamiLimu",
+      imageURL: "https://bit.ly/32i63Kz",
       year: "2021",
-      tools: [
-        { title: "Flutter", icon: flutter },
-        { title: "Firebase", icon: firebase },
-        { title: "Figma", icon: figma },
-      ],
+      duration: "5 months",
+      link: "https://hisa.co/",
     },
     {
       id: 4,
-      title: "GoKenya App",
-      quantity: 1,
-      imageURL: gokenya,
-      genres: "Android/ iOS App",
-      year: "2021",
-      tools: [
-        { title: "Flutter", icon: flutter },
-        { title: "Firebase", icon: firebase },
-        { title: "Figma", icon: figma },
-      ],
+      title: "USIU Africa",
+      imageURL: "https://www.usiu.ac.ke/assets/image/usiu-logo.png",
+      year: "2017",
+      duration: "4 Years",
+      link: "https://hisa.co/",
     },
   ];
 
@@ -86,7 +75,7 @@ const Projects = () => {
     <Box sx={{ ml: 5, height: 250 }}>
       <DetailsModal open={open} handleClose={handleClose} />
 
-      <Typography variant="h5">Featured Projects</Typography>
+      <Typography variant="h5">Experience</Typography>
 
       <Stack
         direction="row"
@@ -113,7 +102,7 @@ const Projects = () => {
                 borderRadius: 0,
 
                 "&:hover": {
-                  height: 310,
+                  height: skill.tools ? 310 : 270,
                   width: "23%",
                   zIndex: 1,
                   position: "absolute",
@@ -142,7 +131,10 @@ const Projects = () => {
                 />
               </Box>
 
-              <Box id="project-title" sx={{ m: 2, mr: 1, mt: 3 }}>
+              <Box
+                id="project-title"
+                sx={{ m: 2, mr: 1, mt: skill.tools ? 3 : 5 }}
+              >
                 <Grid
                   container
                   justifyContent="space-between"
@@ -159,7 +151,7 @@ const Projects = () => {
                       sx={{ fontWeight: "bold" }}
                       color="#5A5A5A"
                     >
-                      {skill.genres} • {skill.year}
+                      {skill.year} • {skill.duration}
                     </Typography>
                   </Grid>
 
@@ -177,36 +169,20 @@ const Projects = () => {
 
                 {/* TECHNOLOGY ICONS */}
                 <Grid container spacing={2} sx={{ pt: 1 }}>
-                  <Grid item>
-                    <Tooltip title="Flutter" arrow>
-                      <img
-                        src={flutter}
-                        width="20px"
-                        height="20px"
-                        alt="flutter icon"
-                      />
-                    </Tooltip>
-                  </Grid>
-                  <Grid item>
-                    <Tooltip title="Firebase" arrow>
-                      <img
-                        src={firebase}
-                        width="20px"
-                        height="20px"
-                        alt="firbase icon"
-                      />
-                    </Tooltip>
-                  </Grid>
-                  <Grid item>
-                    <Tooltip title="Figma" arrow>
-                      <img
-                        src={figma}
-                        width="20px"
-                        height="20px"
-                        alt="firbase icon"
-                      />
-                    </Tooltip>
-                  </Grid>
+                  {skill.tools?.map((tool) => {
+                    return (
+                      <Grid item key={tool.title}>
+                        <Tooltip title={tool.title} arrow>
+                          <img
+                            src={tool.icon}
+                            width="20px"
+                            height="20px"
+                            alt="flutter icon"
+                          />
+                        </Tooltip>
+                      </Grid>
+                    );
+                  })}
                 </Grid>
               </Box>
             </Card>
@@ -217,4 +193,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default Experience;

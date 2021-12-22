@@ -3,6 +3,7 @@ import "./Home.css";
 import Showcase from "./Showcase";
 import Skills from "./Skills";
 import Projects from "./Projects.js";
+import Experience from "./Experience.js";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <div className="mid">
         <Projects />
         <Skills />
+        <Experience />
       </div>
     </div>
   );
