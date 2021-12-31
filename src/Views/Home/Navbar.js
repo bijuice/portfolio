@@ -12,6 +12,7 @@ import {
 import { GitHub, LinkedIn } from "@mui/icons-material";
 import logo from "../../assets/images/logo.png";
 import avatar from "../../assets/images/avatar.jpg";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [navbarColor, setNavbarColor] = useState("transparent");
@@ -46,10 +47,18 @@ const Navbar = () => {
               <IconButton>
                 <img src={logo} alt="bijuice logo" height={43} width={102} />
               </IconButton>
-              <Button>Home</Button>
-              <Button>Projects</Button>
-              <Button>Skills</Button>
-              <Button>Experience</Button>
+              <Link to="/">
+                <Button>Home</Button>
+              </Link>
+              <Link to="/projects">
+                <Button>Projects</Button>
+              </Link>
+              <Link to="/skills">
+                <Button>Skills</Button>
+              </Link>
+              <Link to="/experience">
+                <Button>Experience</Button>
+              </Link>
             </Grid>
 
             <Grid item>

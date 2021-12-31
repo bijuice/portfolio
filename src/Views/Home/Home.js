@@ -1,15 +1,20 @@
-import Navbar from "./Navbar";
-import "./Home.css";
 import Showcase from "./Showcase";
 import Skills from "./Skills";
 import Projects from "./Projects.js";
 import Experience from "./Experience.js";
+import { motion } from "framer-motion";
+import { routeAnimation } from "../../preferences/animationPrefs";
 
 const Home = () => {
   return (
-    <div className="home">
+    <motion.div
+      className="home"
+      variants={routeAnimation}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
       <div className="top">
-        <Navbar />
         <Showcase />
       </div>
 
@@ -18,7 +23,7 @@ const Home = () => {
         <Skills />
         <Experience />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -7,6 +7,23 @@ import flutter from "../../assets/images/flutter.svg";
 import firebase from "../../assets/images/firebase.svg";
 import figma from "../../assets/images/figma.svg";
 import DetailsModal from "../Components/DetailsModal";
+import { motion } from "framer-motion";
+
+const ccDetails = {
+  id: 1,
+  title: "Culture Capture App",
+  quantity: 1,
+  imageURL: culturecapture,
+  genres: "Android/ iOS App",
+  year: "2020",
+  tools: [
+    { title: "Flutter", icon: flutter },
+    { title: "Firebase", icon: firebase },
+    { title: "Figma", icon: figma },
+  ],
+  description:
+    "Culture Capture is a social digital museum which gamifies anthropology.",
+};
 
 const Showcase = () => {
   const [open, setOpen] = useState(false);
@@ -39,7 +56,13 @@ const Showcase = () => {
         </Typography>
 
         <Grid container spacing={3} sx={{ pt: 2 }}>
-          <Grid item>
+          <Grid
+            item
+            component={motion.div}
+            whileHover={{
+              scale: 1.3,
+            }}
+          >
             <Tooltip title="Flutter" arrow sx={{ backgroundColor: "red" }}>
               <img
                 src={flutter}
@@ -49,7 +72,13 @@ const Showcase = () => {
               />
             </Tooltip>
           </Grid>
-          <Grid item>
+          <Grid
+            item
+            component={motion.div}
+            whileHover={{
+              scale: 1.3,
+            }}
+          >
             <Tooltip title="Firebase" arrow>
               <img
                 src={firebase}
@@ -59,7 +88,13 @@ const Showcase = () => {
               />
             </Tooltip>
           </Grid>
-          <Grid item>
+          <Grid
+            item
+            component={motion.div}
+            whileHover={{
+              scale: 1.3,
+            }}
+          >
             <Tooltip title="Figma" arrow>
               <img src={figma} width="30px" height="30px" alt="firbase icon" />
             </Tooltip>
@@ -81,7 +116,11 @@ const Showcase = () => {
             >
               More Info
             </Button>
-            <DetailsModal open={open} handleClose={handleClose} />
+            <DetailsModal
+              open={open}
+              handleClose={handleClose}
+              details={ccDetails}
+            />
           </Grid>
         </Grid>
       </Container>

@@ -10,11 +10,7 @@ import {
 import "./Components.css";
 import { PlayArrow } from "@mui/icons-material";
 import culturecapture from "../../assets/images/culture-capture.png";
-import flutter from "../../assets/images/flutter.svg";
-import firebase from "../../assets/images/firebase.svg";
-import figma from "../../assets/images/figma.svg";
-import Zoom from "@mui/material/Zoom";
-
+import { Zoom } from "@mui/material";
 const style = {
   position: "absolute",
   top: "5%",
@@ -26,17 +22,21 @@ const style = {
   boxShadow: 24,
   overflowY: "scroll",
   borderRadius: 2,
+  border: "none",
 };
 
-const DetailsModal = (props) => {
-  return (
+const DetailsModal = ({ open, handleClose, details }) => {
+  // conditionally renders modal whether details object has data. Idk why its needed but the app crashes without it
+  return !details ? (
+    <div></div>
+  ) : (
     <Modal
-      open={props.open}
-      onClose={props.handleClose}
+      open={open}
+      onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Zoom in={props.open}>
+      <Zoom in={open}>
         <Box sx={style}>
           <div className="modal-top">
             <Container
@@ -63,39 +63,26 @@ const DetailsModal = (props) => {
                   <div>Capture</div>
                 </Typography>
               </Container>
+
               <Container sx={{ mt: 3 }}>
-                <Grid container spacing={3} sx={{ pt: 1 }}>
-                  <Grid item>
-                    <Tooltip title="Flutter" arrow>
-                      <img
-                        src={flutter}
-                        width="20px"
-                        height="20px"
-                        alt="flutter icon"
-                      />
-                    </Tooltip>
+                {details.tools && (
+                  <Grid container spacing={3} sx={{ pt: 1 }}>
+                    {details.tools.map((tool) => {
+                      return (
+                        <Grid item key={tool.title}>
+                          <Tooltip title={tool.title} arrow>
+                            <img
+                              src={tool.icon}
+                              width="20px"
+                              height="20px"
+                              alt={tool.title}
+                            />
+                          </Tooltip>
+                        </Grid>
+                      );
+                    })}
                   </Grid>
-                  <Grid item>
-                    <Tooltip title="Firebase" arrow>
-                      <img
-                        src={firebase}
-                        width="20px"
-                        height="20px"
-                        alt="firbase icon"
-                      />
-                    </Tooltip>
-                  </Grid>
-                  <Grid item>
-                    <Tooltip title="Figma" arrow>
-                      <img
-                        src={figma}
-                        width="20px"
-                        height="20px"
-                        alt="firbase icon"
-                      />
-                    </Tooltip>
-                  </Grid>
-                </Grid>
+                )}
 
                 <Grid container spacing={3} sx={{ pt: 3 }}>
                   <Grid item>
@@ -110,7 +97,7 @@ const DetailsModal = (props) => {
 
           {/* mid section content  */}
 
-          <Container sx={{ height: 1000, backgroundColor: "#141414", pt: 5 }}>
+          <Container sx={{ height: 400, backgroundColor: "#141414", pt: 5 }}>
             <Grid
               container
               spacing={2}
@@ -121,7 +108,7 @@ const DetailsModal = (props) => {
               }}
             >
               <Grid item sx={{ width: "65%" }}>
-                <Typography variant="h4">Culture Capture App</Typography>
+                <Typography variant="h4">{details.title}</Typography>
 
                 <Box spacing={5} sx={{ display: "flex", pt: 1 }}>
                   <Typography variant="subtitle1" color="#46D369">
@@ -170,10 +157,10 @@ const DetailsModal = (props) => {
                     color="#787878"
                     sx={{ pr: 1 }}
                   >
-                    Genre:
+                    {details.genres ? "Genre:" : "Role:"}
                   </Typography>
                   <Typography variant="subtitle1" component="span">
-                    Android/iOS App
+                    {details.genres || details.role}
                   </Typography>
                 </Box>
 
@@ -198,54 +185,40 @@ const DetailsModal = (props) => {
                     color="#787878"
                     sx={{ pr: 1 }}
                   >
-                    Duration:
+                    Year:
                   </Typography>
                   <Typography variant="subtitle1" component="span">
-                    1 Year
+                    {details.year}
                   </Typography>
                 </Box>
 
-                <Box sx={{ pt: 1 }}>
-                  <Typography
-                    variant="subtitle1"
-                    color="#787878"
-                    sx={{ pr: 1 }}
-                  >
-                    Technologies:
-                  </Typography>
-                  <Grid container spacing={3} sx={{ pt: 1 }}>
-                    <Grid item>
-                      <Tooltip title="Flutter" arrow>
-                        <img
-                          src={flutter}
-                          width="20px"
-                          height="20px"
-                          alt="flutter icon"
-                        />
-                      </Tooltip>
+                {details.tools && (
+                  <Box sx={{ pt: 1 }}>
+                    <Typography
+                      variant="subtitle1"
+                      color="#787878"
+                      sx={{ pr: 1 }}
+                    >
+                      Technologies:
+                    </Typography>
+                    <Grid container spacing={3} sx={{ pt: 1 }}>
+                      {details.tools.map((tool) => {
+                        return (
+                          <Grid item key={tool.title}>
+                            <Tooltip title={tool.title} arrow>
+                              <img
+                                src={tool.icon}
+                                width="20px"
+                                height="20px"
+                                alt={tool.title}
+                              />
+                            </Tooltip>
+                          </Grid>
+                        );
+                      })}
                     </Grid>
-                    <Grid item>
-                      <Tooltip title="Firebase" arrow>
-                        <img
-                          src={firebase}
-                          width="20px"
-                          height="20px"
-                          alt="firbase icon"
-                        />
-                      </Tooltip>
-                    </Grid>
-                    <Grid item>
-                      <Tooltip title="Figma" arrow>
-                        <img
-                          src={figma}
-                          width="20px"
-                          height="20px"
-                          alt="firbase icon"
-                        />
-                      </Tooltip>
-                    </Grid>
-                  </Grid>
-                </Box>
+                  </Box>
+                )}
               </Grid>
             </Grid>
           </Container>
