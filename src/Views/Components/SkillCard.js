@@ -1,9 +1,24 @@
 import { Card, Box, Typography, Grid } from "@mui/material";
+import { cardAnimation } from "../../preferences/animationPrefs";
+import { motion } from "framer-motion";
 
-const SkillCard = ({ skill, index }) => {
+const SkillCard = ({ skill, index, width }) => {
+  console.log(width);
+
+  //decides responsive values
+  const resolveCardWidth = () => {
+    if (width < 862) {
+      return width * 0.29;
+    } else if (width < 1339) {
+      return width * 0.23;
+    } else {
+      return width * 0.15;
+    }
+  };
+
   //function to ensure card does not animate out of bounds
   const transformDecider = () => {
-    if (index + (1 % 6)) {
+    if ((index + 1) % 6) {
       return "translate(-5%, -30%)";
     } else if (index === 5) {
       return "translate(-12%, -30%)";
@@ -17,9 +32,8 @@ const SkillCard = ({ skill, index }) => {
       <Card
         sx={{
           height: 135,
-          width: "15%",
-          minWidth: "13%",
-          maxWidth: 330,
+          width: resolveCardWidth(width),
+          minWidth: 200,
           boxShadow: 20,
           transition: "0.4s",
           zIndex: 1,
@@ -28,7 +42,7 @@ const SkillCard = ({ skill, index }) => {
 
           "&:hover": {
             height: 250,
-            width: "23%",
+            width: 350,
             maxWidth: 400,
             position: "absolute",
             zIndex: 4,
@@ -44,6 +58,8 @@ const SkillCard = ({ skill, index }) => {
         }}
       >
         <Box
+          component={motion.div}
+          variants={cardAnimation}
           id="skill-box"
           sx={{
             width: "100%",

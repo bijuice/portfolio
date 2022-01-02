@@ -8,6 +8,8 @@ import firebase from "../../assets/images/firebase.svg";
 import figma from "../../assets/images/figma.svg";
 import DetailsModal from "../Components/DetailsModal";
 import { motion } from "framer-motion";
+import { buttonAnimation } from "../../preferences/animationPrefs";
+import { Link } from "react-router-dom";
 
 const ccDetails = {
   id: 1,
@@ -23,6 +25,12 @@ const ccDetails = {
   ],
   description:
     "Culture Capture is a social digital museum which gamifies anthropology.",
+  videos: [
+    {
+      title: "Culture Capture Prototype",
+      url: "https://drive.google.com/file/d/1JXTBnxfMEp2HWVc9Yv41IOUingLI9ecc/view?usp=sharing",
+    },
+  ],
 };
 
 const Showcase = () => {
@@ -36,6 +44,8 @@ const Showcase = () => {
       sx={{
         ml: 0,
         pt: 20,
+        display: "block",
+        pb: 12,
       }}
     >
       <Container
@@ -50,7 +60,7 @@ const Showcase = () => {
           <div>Capture</div>
         </Typography>
       </Container>
-      <Container sx={{ mt: 3, ml: 3 }}>
+      <Container sx={{ mt: 3 }}>
         <Typography variant="h6">
           Funthropology: It's fun anthropology!
         </Typography>
@@ -103,12 +113,24 @@ const Showcase = () => {
 
         <Grid container spacing={3} sx={{ pt: 2 }}>
           <Grid item>
-            <Button variant="contained" size="large" startIcon={<PlayArrow />}>
-              Play
-            </Button>
+            <Link to="/video" style={{ textDecoration: "none" }}>
+              <Button
+                component={motion.div}
+                variants={buttonAnimation}
+                whileHover="hover"
+                variant="contained"
+                size="large"
+                startIcon={<PlayArrow />}
+              >
+                Play
+              </Button>
+            </Link>
           </Grid>
           <Grid item>
             <Button
+              component={motion.div}
+              variants={buttonAnimation}
+              whileHover="hover"
               variant="contained"
               size="large"
               startIcon={<InfoOutlined />}

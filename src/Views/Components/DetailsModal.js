@@ -11,6 +11,7 @@ import "./Components.css";
 import { PlayArrow } from "@mui/icons-material";
 import culturecapture from "../../assets/images/culture-capture.png";
 import { Zoom } from "@mui/material";
+
 const style = {
   position: "absolute",
   top: "5%",
@@ -23,6 +24,16 @@ const style = {
   overflowY: "scroll",
   borderRadius: 2,
   border: "none",
+  "&::-webkit-scrollbar": {
+    width: "0.7em",
+  },
+  "&::-webkit-scrollbar-track": {
+    boxShadow: "inset 0 0 6px rgba(0, 0, 0, 0.3)",
+  },
+
+  "&::-webkit-scrollbar-thumb": {
+    backgroundColor: "#424242",
+  },
 };
 
 const DetailsModal = ({ open, handleClose, details }) => {
@@ -115,7 +126,7 @@ const DetailsModal = ({ open, handleClose, details }) => {
                     99.9% recommended
                   </Typography>
                   <Typography variant="subtitle1" sx={{ pl: 2, pr: 2 }}>
-                    2020
+                    {details.year}
                   </Typography>
                   <Box sx={{ border: 1, borderColor: "white" }}>
                     <Typography variant="subtitle2" sx={{ p: 0.25 }}>

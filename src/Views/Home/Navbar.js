@@ -13,6 +13,8 @@ import { GitHub, LinkedIn } from "@mui/icons-material";
 import logo from "../../assets/images/logo.png";
 import avatar from "../../assets/images/avatar.jpg";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { buttonAnimation } from "../../preferences/animationPrefs";
 
 const Navbar = () => {
   const [navbarColor, setNavbarColor] = useState("transparent");
@@ -44,25 +46,59 @@ const Navbar = () => {
             alignItems="center"
           >
             <Grid alignItems="baseline" justifyContent="space-evenly">
-              <IconButton>
-                <img src={logo} alt="bijuice logo" height={43} width={102} />
-              </IconButton>
-              <Link to="/">
-                <Button>Home</Button>
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <IconButton
+                  component={motion.div}
+                  variants={buttonAnimation}
+                  whileHover="hover"
+                >
+                  <img src={logo} alt="bijuice logo" height={43} width={102} />
+                </IconButton>
               </Link>
-              <Link to="/projects">
-                <Button>Projects</Button>
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <Button
+                  component={motion.div}
+                  variants={buttonAnimation}
+                  whileHover="hover"
+                >
+                  Home
+                </Button>
               </Link>
-              <Link to="/skills">
-                <Button>Skills</Button>
+              <Link to="/projects" style={{ textDecoration: "none" }}>
+                <Button
+                  component={motion.div}
+                  variants={buttonAnimation}
+                  whileHover="hover"
+                >
+                  Projects
+                </Button>
               </Link>
-              <Link to="/experience">
-                <Button>Experience</Button>
+              <Link to="/skills" style={{ textDecoration: "none" }}>
+                <Button
+                  component={motion.div}
+                  variants={buttonAnimation}
+                  whileHover="hover"
+                >
+                  Skills
+                </Button>
+              </Link>
+              <Link to="/experience" style={{ textDecoration: "none" }}>
+                <Button
+                  component={motion.div}
+                  variants={buttonAnimation}
+                  whileHover="hover"
+                >
+                  Experience
+                </Button>
               </Link>
             </Grid>
 
             <Grid item>
-              <IconButton>
+              <IconButton
+                component={motion.div}
+                variants={buttonAnimation}
+                whileHover="hover"
+              >
                 <a
                   href="https://github.com/bijuice"
                   target="_blank"
@@ -71,7 +107,11 @@ const Navbar = () => {
                   <GitHub color="primary" fontSize="large" />
                 </a>
               </IconButton>
-              <IconButton>
+              <IconButton
+                component={motion.div}
+                variants={buttonAnimation}
+                whileHover="hover"
+              >
                 <a
                   href="https://www.linkedin.com/in/abdul-rahman-rehmtulla-2794b81a7/"
                   target="_blank"
@@ -80,7 +120,12 @@ const Navbar = () => {
                   <LinkedIn color="primary" fontSize="large" />
                 </a>
               </IconButton>
-              <IconButton onClick={handleClick}>
+              <IconButton
+                onClick={handleClick}
+                component={motion.div}
+                variants={buttonAnimation}
+                whileHover="hover"
+              >
                 <Avatar src={avatar} alt="avatar" />
               </IconButton>
 
@@ -118,10 +163,28 @@ const Navbar = () => {
                 transformOrigin={{ horizontal: "right", vertical: "top" }}
                 anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
               >
-                <MenuItem onClick={handleClose}>About Me</MenuItem>
-                <MenuItem onClick={handleClose}>Contact</MenuItem>
-                <MenuItem onClick={handleClose}>GitHub</MenuItem>
-                <MenuItem onClick={handleClose}>LinkedIn</MenuItem>
+                <a
+                  href="mailto: abdul.r.zaid@gmail.com"
+                  style={{ textDecoration: "none" }}
+                >
+                  <MenuItem onClick={handleClose}>Contact</MenuItem>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/abdul-rahman-rehmtulla-2794b81a7/"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ textDecoration: "none" }}
+                >
+                  <MenuItem onClick={handleClose}>LinkedIn</MenuItem>
+                </a>
+                <a
+                  href="https://github.com/bijuice"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ textDecoration: "none" }}
+                >
+                  <MenuItem onClick={handleClose}>GitHub</MenuItem>
+                </a>
               </Menu>
             </Grid>
           </Grid>
