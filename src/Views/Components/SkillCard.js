@@ -60,6 +60,8 @@ const SkillCard = ({ skill, index, width }) => {
         <Box
           component={motion.div}
           variants={cardAnimation}
+          initial="hidden"
+          animate="visible"
           id="skill-box"
           sx={{
             width: "100%",

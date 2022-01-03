@@ -59,7 +59,7 @@ function App() {
           <Box sx={{ mb: 5, borderTop: "1px solid #424242" }}>
             <Typography variant="subtitle1" sx={{ pt: 5, pl: 7, pb: 3 }}>
               {" "}
-              Made with ❤️ by Abdul Rahman Rehmtulla
+              Made with ❤️ & 🐈 by Abdul Rahman Rehmtulla
             </Typography>
           </Box>
         )}
