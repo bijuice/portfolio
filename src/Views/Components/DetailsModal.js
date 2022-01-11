@@ -249,6 +249,50 @@ const DetailsModal = ({ open, handleClose, details }) => {
                 )}
               </Grid>
             </Grid>
+
+            <Typography
+              variant="h6"
+              color="#46D369"
+              sx={{ pl: 2, pt: 2, fontWeight: "bold" }}
+            >
+              Links
+            </Typography>
+
+            {details.links && (
+              <Grid container sx={{ pt: 2, pb: 5, pl: 1 }}>
+                {details.links.map((link) => {
+                  return (
+                    <Grid item sx={{ mr: 2 }}>
+                      <Button
+                        size="small"
+                        sx={{
+                          borderRadius: 10,
+                          p: 1,
+                          backgroundColor: "white",
+                          textTransform: "none",
+                          transition: "0.7s",
+                          "&:hover": {
+                            backgroundColor: "#46D369",
+                          },
+                        }}
+                      >
+                        <a
+                          href={link.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            textDecoration: "none",
+                            color: "#424242",
+                          }}
+                        >
+                          {link.title}
+                        </a>
+                      </Button>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            )}
           </Container>
         </Box>
       </Zoom>

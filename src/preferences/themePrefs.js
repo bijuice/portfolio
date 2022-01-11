@@ -23,7 +23,7 @@ export const carouselTheme = (index, width, value) => {
 
     "&:hover": {
       height: value.tools ? 320 : 280,
-      width: "23.5%",
+      width: "24.5%",
       zIndex: 15,
       position: "absolute",
       display: "block",

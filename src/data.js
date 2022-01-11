@@ -82,12 +82,17 @@ export const experience = [
     card: hisa,
     year: "2021",
     duration: "7 months",
-    link: "https://hisa.co/",
     role: "Fullstack Developer",
     tools: [
       { title: "Vue JS", icon: vue },
       { title: "Bootstrap", icon: bootstrap },
       { title: "Laravel", icon: laravel },
+    ],
+    links: [
+      {
+        title: "Website",
+        url: "https://www.hisa.co",
+      },
     ],
     description:
       "<p>Hisa is Africa's first wealth management platform that makes investing social. The app allows users access to different investment options like stocks and ETFs. The app also provides educational content like news, podcasts and user generated discussions aimed at improving users' financial literacy.</p> <p>In this role I utilized Vue JS with the Composition API and Bootstrap 4 to create a single page web app used to manage users of the Hisa financial platform</p>",
@@ -99,13 +104,21 @@ export const experience = [
     logo: culturecapturelogo,
     year: "2020",
     duration: "1 year",
-    link: "https://hisa.co/",
     role: "Co-Founder",
-
     tools: [
       { title: "Flutter", icon: flutter },
       { title: "Firebase", icon: firebase },
       { title: "Figma", icon: figma },
+    ],
+    links: [
+      {
+        title: "Instagram",
+        url: "https://www.instagram.com/culture_capture_/",
+      },
+      {
+        title: "Twitter",
+        url: "https://twitter.com/CultureCapture_",
+      },
     ],
     description:
       "<p> Culture Capture is a social digital museum with gamification aspects. The platform aims to preserve native cultures by encouraging users to upload pictures, audio and video of their culture's food, dances, and rituals. </p>  <p> This platform was designed using Figma. The mobile apps are currently being created using Dart and Flutter for iOS and Android, while using Firebase as a 'backend as a service' </p>",
@@ -117,8 +130,13 @@ export const experience = [
     card: "https://bit.ly/32i63Kz",
     year: "2021",
     duration: "5 months",
-    link: "https://hisa.co/",
     role: "Mentor",
+    links: [
+      {
+        title: "Website",
+        url: "https://www.kamilimu.org/",
+      },
+    ],
     description:
       "<p>KamiLimu is a free 8-month structured mentorship program that seeks to augment classroom learning for Computer Science students at Kenyan universities.</p> <p>In this role I participated in top level decision making for the programme, including advising on the creation of a 5 year strategic plan. I also trained a group of 4 mentees on core skills such as CV writing, confidence building,public speaking, and scholarship writing",
   },
@@ -129,7 +147,12 @@ export const experience = [
     card: "https://www.usiu.ac.ke/assets/image/usiu-logo.png",
     year: "2017",
     duration: "4 Years",
-    link: "https://hisa.co/",
+    links: [
+      {
+        title: "Website",
+        url: "https://www.usiu.ac.ke/",
+      },
+    ],
     role: "Student",
     description:
       "I achieved a Bachelor of Science in Applied Computer Technology with a concentration in Forensic Information Technology and Cybercrime",
@@ -151,6 +174,20 @@ export const projects = [
       { title: "Firebase", icon: firebase },
       { title: "Figma", icon: figma },
     ],
+    links: [
+      {
+        title: "GitHub",
+        url: "https://github.com/bijuice/CultureCapture_Prototype",
+      },
+      {
+        title: "Instagram",
+        url: "https://www.instagram.com/culture_capture_/",
+      },
+      {
+        title: "Twitter",
+        url: "https://twitter.com/CultureCapture_",
+      },
+    ],
     description:
       "<p> Culture Capture is a social digital museum with gamification aspects. The platform aims to preserve native cultures by encouraging users to upload pictures, audio and video of their culture's food, dances, and rituals. </p>  <p> This platform was designed using Figma. The mobile apps are currently being created using Dart and Flutter for iOS and Android, while using Firebase as a 'backend as a service' </p>",
   },
@@ -170,6 +207,16 @@ export const projects = [
       { title: "Flutter", icon: flutter },
       { title: "Firebase", icon: firebase },
     ],
+    links: [
+      {
+        title: "GitHub",
+        url: "https://github.com/bijuice/portfolio",
+      },
+      {
+        title: "Web App",
+        url: "http://www.arehmtulla.com",
+      },
+    ],
     description:
       "Bijuiceflix is a Netflix inspired portfolio web app created using React JS, Express,Figma, and Firebase. The app uses Material UI for styled components and a combination of CSS and Framer Motion for the animations. The video player was created from scratch for this app.",
   },
@@ -186,6 +233,12 @@ export const projects = [
       { title: "Bootstrap", icon: bootstrap },
       { title: "Laravel", icon: laravel },
     ],
+    links: [
+      {
+        title: "Website",
+        url: "https://www.hisa.co",
+      },
+    ],
     description:
       "<p>Hisa is Africa's first wealth management platform that makes investing social. The app allows users access to different investment options like stocks and ETFs. The app also provides educational content like news, podcasts and user generated discussions aimed at improving users' financial literacy.</p> <p>For this project I utilized Vue JS with the Composition API and Bootstrap 4 to create a single page web app used to manage users of the Hisa financial platform</p>",
   },
@@ -198,6 +251,16 @@ export const projects = [
     genres: "Web App",
     year: "2021",
     tools: [{ title: "React JS", icon: react }],
+    links: [
+      {
+        title: "GitHub",
+        url: "https://github.com/bijuice/markdown-engine",
+      },
+      {
+        title: "WebApp",
+        url: "https://markdown-engine-arehmtulla.herokuapp.com/",
+      },
+    ],
     description:
       "A markdown parser built using React JS that converts markdown into other formats such as HTML and LaTeX",
   },
