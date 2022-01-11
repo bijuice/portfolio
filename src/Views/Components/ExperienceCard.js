@@ -18,7 +18,7 @@ const ExperienceCard = ({ experience, index, handleOpen, width }) => {
         onClick={() => {
           handleOpen(experience);
         }}
-        sx={carouselTheme(index, width)}
+        sx={carouselTheme(index, width, experience)}
       >
         <Box
           component={motion.div}
@@ -28,7 +28,7 @@ const ExperienceCard = ({ experience, index, handleOpen, width }) => {
             width: "100%",
             height: "100%",
             transition: "0.3s",
-            backgroundImage: `url(${experience.imageURL})`,
+            backgroundImage: `url(${experience.card})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Container, Typography, Tooltip, Grid, Button } from "@mui/material";
 import { PlayArrow, InfoOutlined } from "@mui/icons-material";
 import culturecapture from "../../assets/images/culture-capture.png";
+import culturecapturelogo from "../../assets/images/culturecapturelogo.png";
 import flutter from "../../assets/images/flutter.svg";
 import firebase from "../../assets/images/firebase.svg";
 import figma from "../../assets/images/figma.svg";
@@ -14,10 +15,13 @@ import { Link } from "react-router-dom";
 const ccDetails = {
   id: 1,
   title: "Culture Capture App",
+  logo: culturecapturelogo,
   quantity: 1,
-  imageURL: culturecapture,
+  imageURL:
+    "https://cdn.pixabay.com/photo/2019/08/15/21/30/marrakech-4409009_960_720.jpg",
   genres: "Android/ iOS App",
   year: "2020",
+  duration: "1 Year",
   tools: [
     { title: "Flutter", icon: flutter },
     { title: "Firebase", icon: firebase },

@@ -14,10 +14,14 @@ import hisa from "./assets/images/hisa.png";
 import vue from "./assets/images/vue.svg";
 import laravel from "./assets/images/laravel.svg";
 import bootstrap from "./assets/images/bootstrap.svg";
-import bijuiceflix from "./assets/images/bijuiceflix.png";
 import react from "./assets/images/react.svg";
 import material from "./assets/images/material.svg";
-import gokenya from "./assets/images/gokenya.png";
+import culturecapturelogo from "./assets/images/culturecapturelogo.png";
+import hisalogo from "./assets/images/hisalogo.png";
+import usiulogo from "./assets/images/usiulogo.png";
+import kamilimulogo from "./assets/images/kamilimulogo.png";
+import bijuicelogo from "./assets/images/bijuicelogo.png";
+import markdownlogo from "./assets/images/markdownlogo.png";
 
 export const skills = [
   {
@@ -74,7 +78,8 @@ export const experience = [
   {
     id: 1,
     title: "Hisa",
-    imageURL: hisa,
+    logo: hisalogo,
+    card: hisa,
     year: "2021",
     duration: "7 months",
     link: "https://hisa.co/",
@@ -84,11 +89,14 @@ export const experience = [
       { title: "Bootstrap", icon: bootstrap },
       { title: "Laravel", icon: laravel },
     ],
+    description:
+      "<p>Hisa is Africa's first wealth management platform that makes investing social. The app allows users access to different investment options like stocks and ETFs. The app also provides educational content like news, podcasts and user generated discussions aimed at improving users' financial literacy.</p> <p>In this role I utilized Vue JS with the Composition API and Bootstrap 4 to create a single page web app used to manage users of the Hisa financial platform</p>",
   },
   {
     id: 2,
     title: "Culture Capture",
-    imageURL: culturecapture,
+    card: culturecapture,
+    logo: culturecapturelogo,
     year: "2020",
     duration: "1 year",
     link: "https://hisa.co/",
@@ -99,24 +107,32 @@ export const experience = [
       { title: "Firebase", icon: firebase },
       { title: "Figma", icon: figma },
     ],
+    description:
+      "<p> Culture Capture is a social digital museum with gamification aspects. The platform aims to preserve native cultures by encouraging users to upload pictures, audio and video of their culture's food, dances, and rituals. </p>  <p> This platform was designed using Figma. The mobile apps are currently being created using Dart and Flutter for iOS and Android, while using Firebase as a 'backend as a service' </p>",
   },
   {
     id: 3,
     title: "KamiLimu",
-    imageURL: "https://bit.ly/32i63Kz",
+    logo: kamilimulogo,
+    card: "https://bit.ly/32i63Kz",
     year: "2021",
     duration: "5 months",
     link: "https://hisa.co/",
     role: "Mentor",
+    description:
+      "<p>KamiLimu is a free 8-month structured mentorship program that seeks to augment classroom learning for Computer Science students at Kenyan universities.</p> <p>In this role I participated in top level decision making for the programme, including advising on the creation of a 5 year strategic plan. I also trained a group of 4 mentees on core skills such as CV writing, confidence building,public speaking, and scholarship writing",
   },
   {
     id: 4,
     title: "USIU Africa",
-    imageURL: "https://www.usiu.ac.ke/assets/image/usiu-logo.png",
+    logo: usiulogo,
+    card: "https://www.usiu.ac.ke/assets/image/usiu-logo.png",
     year: "2017",
     duration: "4 Years",
     link: "https://hisa.co/",
     role: "Student",
+    description:
+      "I achieved a Bachelor of Science in Applied Computer Technology with a concentration in Forensic Information Technology and Cybercrime",
   },
 ];
 
@@ -124,8 +140,10 @@ export const projects = [
   {
     id: 1,
     title: "Culture Capture App",
-    quantity: 1,
-    imageURL: culturecapture,
+    logo: culturecapturelogo,
+    imageURL:
+      "https://cdn.pixabay.com/photo/2019/08/15/21/30/marrakech-4409009_960_720.jpg",
+
     genres: "Android/ iOS App",
     year: "2020",
     tools: [
@@ -133,25 +151,34 @@ export const projects = [
       { title: "Firebase", icon: firebase },
       { title: "Figma", icon: figma },
     ],
+    description:
+      "<p> Culture Capture is a social digital museum with gamification aspects. The platform aims to preserve native cultures by encouraging users to upload pictures, audio and video of their culture's food, dances, and rituals. </p>  <p> This platform was designed using Figma. The mobile apps are currently being created using Dart and Flutter for iOS and Android, while using Firebase as a 'backend as a service' </p>",
   },
   {
     id: 2,
     title: "Bijuiceflix",
-    quantity: 1,
-    imageURL: bijuiceflix,
+    logo: bijuicelogo,
+
+    imageURL:
+      "https://images.pexels.com/photos/109669/pexels-photo-109669.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     genres: "Web App",
     year: "2021",
     tools: [
       { title: "React", icon: react },
       { title: "Material UI", icon: material },
       { title: "Figma", icon: figma },
+      { title: "Flutter", icon: flutter },
+      { title: "Firebase", icon: firebase },
     ],
+    description:
+      "Bijuiceflix is a Netflix inspired portfolio web app created using React JS, Express,Figma, and Firebase. The app uses Material UI for styled components and a combination of CSS and Framer Motion for the animations. The video player was created from scratch for this app.",
   },
   {
     id: 3,
     title: "Hisa Web App",
-    quantity: 1,
-    imageURL: hisa,
+    logo: hisalogo,
+    imageURL:
+      "https://cdn.pixabay.com/photo/2018/01/17/04/14/stock-exchange-3087396_960_720.jpg",
     genres: "Web App",
     year: "2021",
     tools: [
@@ -159,17 +186,19 @@ export const projects = [
       { title: "Bootstrap", icon: bootstrap },
       { title: "Laravel", icon: laravel },
     ],
+    description:
+      "<p>Hisa is Africa's first wealth management platform that makes investing social. The app allows users access to different investment options like stocks and ETFs. The app also provides educational content like news, podcasts and user generated discussions aimed at improving users' financial literacy.</p> <p>For this project I utilized Vue JS with the Composition API and Bootstrap 4 to create a single page web app used to manage users of the Hisa financial platform</p>",
   },
   {
     id: 4,
-    title: "GoKenya App",
-    quantity: 1,
-    imageURL: gokenya,
-    genres: "Android/ iOS App",
+    title: "Markdown Engine",
+    imageURL:
+      "https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    logo: markdownlogo,
+    genres: "Web App",
     year: "2021",
-    tools: [
-      { title: "Flutter", icon: flutter },
-      { title: "Firebase", icon: firebase },
-    ],
+    tools: [{ title: "React JS", icon: react }],
+    description:
+      "A markdown parser built using React JS that converts markdown into other formats such as HTML and LaTeX",
   },
 ];

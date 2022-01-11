@@ -1,4 +1,4 @@
-export const carouselTheme = (index, width) => {
+export const carouselTheme = (index, width, value) => {
   //decides responsive values
   const resolveCardWidth = () => {
     if (width < 862) {
@@ -6,13 +6,15 @@ export const carouselTheme = (index, width) => {
     } else if (width < 1339) {
       return width * 0.23;
     } else {
-      return 230;
+      return "15.2%";
     }
   };
 
   const theme = {
-    height: 135,
+    height: "15%",
+    minHeight: 135,
     width: resolveCardWidth(),
+    minWidth: 200,
     boxShadow: 20,
     transition: "0.4s",
     zIndex: 0,
@@ -20,8 +22,8 @@ export const carouselTheme = (index, width) => {
     borderRadius: 0,
 
     "&:hover": {
-      height: 310,
-      width: 350,
+      height: value.tools ? 320 : 280,
+      width: "23.5%",
       zIndex: 15,
       position: "absolute",
       display: "block",
@@ -32,7 +34,7 @@ export const carouselTheme = (index, width) => {
     },
 
     "&:hover #project-box": {
-      height: "65%",
+      height: value.tools ? "65%" : "70%",
     },
   };
   return theme;

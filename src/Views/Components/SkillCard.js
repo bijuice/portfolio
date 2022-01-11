@@ -3,8 +3,6 @@ import { cardAnimation } from "../../preferences/animationPrefs";
 import { motion } from "framer-motion";
 
 const SkillCard = ({ skill, index, width }) => {
-  console.log(width);
-
   //decides responsive values
   const resolveCardWidth = () => {
     if (width < 862) {
@@ -60,8 +58,6 @@ const SkillCard = ({ skill, index, width }) => {
         <Box
           component={motion.div}
           variants={cardAnimation}
-          initial="hidden"
-          animate="visible"
           id="skill-box"
           sx={{
             width: "100%",

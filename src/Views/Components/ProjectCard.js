@@ -18,7 +18,7 @@ const ProjectCard = ({ project, index, handleOpen, width }) => {
         onClick={() => {
           handleOpen(project);
         }}
-        sx={carouselTheme(index, width)}
+        sx={carouselTheme(index, width, project)}
       >
         <Box
           component={motion.div}
@@ -32,7 +32,21 @@ const ProjectCard = ({ project, index, handleOpen, width }) => {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}
-        ></Box>
+        >
+          <Box
+            sx={{
+              p: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "90%",
+              background:
+                "linear-gradient(rgba(20,255,255,0 ) , rgba(255,255,255,0.7 ) 45%,  rgba(0, 0, 0, 0)) ",
+            }}
+          >
+            <img src={project.logo} alt="project logo" width={"100%"} />
+          </Box>
+        </Box>
 
         <Box id="project-title" sx={{ m: 2, mr: 1 }}>
           <Grid container justifyContent="space-between" alignItems="center">

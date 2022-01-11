@@ -9,8 +9,9 @@ import {
 } from "@mui/material";
 import "./Components.css";
 import { PlayArrow } from "@mui/icons-material";
-import culturecapture from "../../assets/images/culture-capture.png";
 import { Zoom } from "@mui/material";
+import { buttonAnimation } from "../../preferences/animationPrefs";
+import { motion } from "framer-motion";
 
 const style = {
   position: "absolute",
@@ -19,6 +20,7 @@ const style = {
   left: "25%",
   right: "25%",
   width: "50%",
+  minWidth: 500,
   bgcolor: "#141414",
   boxShadow: 24,
   overflowY: "scroll",
@@ -49,52 +51,65 @@ const DetailsModal = ({ open, handleClose, details }) => {
     >
       <Zoom in={open}>
         <Box sx={style}>
-          <div className="modal-top">
+          <Box
+            sx={{
+              width: "100%",
+              height: 300,
+              postion: "relative",
+              pt: 15,
+              background: details.imageURL
+                ? `linear-gradient(to bottom, rgba(0,0,0,0), rgba(20, 20, 20, 100)), url(${details.imageURL})`
+                : "white",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            {/* header content  */}
             <Container
               sx={{
-                pt: 15,
-                pl: 2,
+                display: "flex",
+                alignItems: "center",
+                background: details.imageURL
+                  ? "radial-gradient(rgba(20,20,20,0.7) 5%,  rgba(0, 0, 0, 0)) 80%"
+                  : "white",
+                pr: 100,
               }}
             >
-              {/* header content  */}
-              <Container
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                <img
-                  src={culturecapture}
-                  alt="culture capture logo"
-                  height="150px"
-                  width="auto"
-                />
-                <Typography variant="h3" sx={{ fontWeight: "bold", pl: 2 }}>
-                  <div>Culture</div>
-                  <div>Capture</div>
-                </Typography>
-              </Container>
+              <img
+                src={details.logo}
+                alt="logo"
+                width="400px"
+                style={{ padding: 10 }}
+              />
+            </Container>
 
-              <Container sx={{ mt: 3 }}>
-                {details.tools && (
-                  <Grid container spacing={3} sx={{ pt: 1 }}>
-                    {details.tools.map((tool) => {
-                      return (
-                        <Grid item key={tool.title}>
-                          <Tooltip title={tool.title} arrow>
-                            <img
-                              src={tool.icon}
-                              width="20px"
-                              height="20px"
-                              alt={tool.title}
-                            />
-                          </Tooltip>
-                        </Grid>
-                      );
-                    })}
-                  </Grid>
-                )}
+            <Container sx={{ mt: 3, ml: 3, width: "50%" }}>
+              {details.tools && (
+                <Grid container spacing={3} sx={{ pt: 1 }}>
+                  {details.tools.map((tool) => {
+                    return (
+                      <Grid
+                        item
+                        component={motion.div}
+                        variants={buttonAnimation}
+                        whileHover="hover"
+                        key={tool.title}
+                      >
+                        <Tooltip title={tool.title} arrow>
+                          <img
+                            src={tool.icon}
+                            width="20px"
+                            height="20px"
+                            alt={tool.title}
+                          />
+                        </Tooltip>
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+              )}
 
+              {details.videos && (
                 <Grid container spacing={3} sx={{ pt: 3 }}>
                   <Grid item>
                     <Button variant="contained" startIcon={<PlayArrow />}>
@@ -102,9 +117,9 @@ const DetailsModal = ({ open, handleClose, details }) => {
                     </Button>
                   </Grid>
                 </Grid>
-              </Container>
+              )}
             </Container>
-          </div>
+          </Box>
 
           {/* mid section content  */}
 
@@ -135,15 +150,10 @@ const DetailsModal = ({ open, handleClose, details }) => {
                   </Box>
                 </Box>
 
-                <Typography sx={{ pt: 2 }}>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Corrupti, quidem aliquam consequuntur commodi voluptate hic
-                  itaque dolorem, nihil placeat facilis maiores sit eveniet.
-                  Quibusdam sequi consequuntur, iste at nesciunt cupiditate
-                  doloremque quo qui molestias. Architecto, suscipit! Laudantium
-                  doloremque, adipisci itaque ullam voluptas sit doloribus earum
-                  voluptatibus assumenda cumque magnam! Quisquam illo est
-                </Typography>
+                <Typography
+                  sx={{ pt: 2 }}
+                  dangerouslySetInnerHTML={{ __html: details.description }}
+                ></Typography>
               </Grid>
 
               <Grid item sx={{ pr: 2, position: "sticky" }}>
@@ -188,20 +198,21 @@ const DetailsModal = ({ open, handleClose, details }) => {
                     Culture Capture
                   </Typography>
                 </Box>
-
-                <Box sx={{ pt: 1 }}>
-                  <Typography
-                    variant="subtitle1"
-                    component="span"
-                    color="#787878"
-                    sx={{ pr: 1 }}
-                  >
-                    Year:
-                  </Typography>
-                  <Typography variant="subtitle1" component="span">
-                    {details.year}
-                  </Typography>
-                </Box>
+                {details.duration && (
+                  <Box sx={{ pt: 1 }}>
+                    <Typography
+                      variant="subtitle1"
+                      component="span"
+                      color="#787878"
+                      sx={{ pr: 1 }}
+                    >
+                      Duration:
+                    </Typography>
+                    <Typography variant="subtitle1" component="span">
+                      {details.duration}
+                    </Typography>
+                  </Box>
+                )}
 
                 {details.tools && (
                   <Box sx={{ pt: 1 }}>
@@ -215,7 +226,13 @@ const DetailsModal = ({ open, handleClose, details }) => {
                     <Grid container spacing={3} sx={{ pt: 1 }}>
                       {details.tools.map((tool) => {
                         return (
-                          <Grid item key={tool.title}>
+                          <Grid
+                            item
+                            key={tool.title}
+                            component={motion.div}
+                            variants={buttonAnimation}
+                            whileHover="hover"
+                          >
                             <Tooltip title={tool.title} arrow>
                               <img
                                 src={tool.icon}

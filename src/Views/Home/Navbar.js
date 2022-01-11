@@ -10,7 +10,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { GitHub, LinkedIn } from "@mui/icons-material";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/bijuicelogo.png";
 import avatar from "../../assets/images/avatar.jpg";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";

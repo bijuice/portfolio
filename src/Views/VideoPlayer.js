@@ -1,4 +1,11 @@
-import { Box, IconButton, Stack, Slider, Typography } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  Stack,
+  Slider,
+  Typography,
+  CircularProgress,
+} from "@mui/material";
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { useState, useEffect, useRef } from "react";
@@ -60,8 +67,6 @@ const VideoPlayer = () => {
     volume,
   } = useVideoPlayer(videoElement);
 
-  const [showControls, setShowControls] = useState(true);
-
   const fullscreen = useRef();
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -90,16 +95,6 @@ const VideoPlayer = () => {
     setIsFullscreen(!isFullscreen);
   };
 
-  // const showControlsController = () => {
-  //   setShowControls(true);
-
-  //   setTimeout(() => {
-  //     setShowControls(false);
-  //   }, 5000);
-  // };
-
-  // window.addEventListener("mousemove", showControlsController);
-
   const resolveVolumeIcon = () => {
     if (volume === 0) {
       return <VolumeMute sx={{ fontSize: 50 }} />;
@@ -108,6 +103,20 @@ const VideoPlayer = () => {
     }
 
     return <VolumeUp sx={{ fontSize: 50 }} />;
+  };
+
+  const [showLoading, setShowLoading] = useState(true);
+
+  useEffect(() => {
+    videoElement.current.addEventListener("loadeddata", () =>
+      setShowLoading(false)
+    );
+  }, []);
+
+  const [showAction, setShowAction] = useState(false);
+
+  const resolveShowAction = () => {
+    setShowAction(true);
   };
 
   return (
@@ -119,30 +128,29 @@ const VideoPlayer = () => {
       sx={{ width: "100vw" }}
       ref={fullscreen}
     >
-      {/* <PlayArrow
-        sx={{
-          fontSize: 150,
-          color: "white",
-          position: "absolute",
-          top: "35%",
-          left: "45%",
-          zIndex: 5,
-          display: "block",
-        }}
-      /> */}
-      {showControls && (
-        <Box sx={{ position: "absolute", ml: 2, mt: 2, zIndex: 1 }}>
-          <IconButton
-            component={motion.div}
-            variants={buttonAnimation}
-            whileHover="hover"
-            onClick={() => navigate("/")}
-          >
-            <ArrowBack sx={{ fontSize: 45 }} />
-          </IconButton>
-        </Box>
+      {showLoading && (
+        <CircularProgress
+          size={100}
+          sx={{
+            color: "#E50914",
+            position: "absolute",
+            top: "40%",
+            left: "47%",
+            zIndex: 5,
+            display: "block",
+          }}
+        />
       )}
-
+      <Box sx={{ position: "absolute", ml: 2, mt: 2, zIndex: 1 }}>
+        <IconButton
+          component={motion.div}
+          variants={buttonAnimation}
+          whileHover="hover"
+          onClick={() => navigate("/")}
+        >
+          <ArrowBack sx={{ fontSize: 45 }} />
+        </IconButton>
+      </Box>
       <Box onClick={togglePlay}>
         <video
           height={height - 18}
@@ -152,126 +160,122 @@ const VideoPlayer = () => {
           onTimeUpdate={handleOnTimeUpdate}
         />
       </Box>
-
-      {showControls && (
-        <Box
-          sx={{ width: "100vw", zIndex: 1, top: "85%", position: "absolute" }}
+      <Box sx={{ width: "100vw", zIndex: 1, top: "85%", position: "absolute" }}>
+        <Slider
+          aria-label="Volume"
+          value={progress}
+          onChange={(e) => handleVideoProgress(e)}
+          sx={{ ml: 5, width: width - 70, color: "#E50914" }}
+          min={0}
+          step={0.00001}
+          max={1}
+        />
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          sx={{ width: width }}
         >
-          <Slider
-            aria-label="Volume"
-            value={progress}
-            onChange={(e) => handleVideoProgress(e)}
-            sx={{ ml: 5, width: width - 70, color: "#E50914" }}
-            min={0}
-            step={0.00001}
-            max={1}
-          />
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            sx={{ width: width }}
-          >
-            <Stack direction="row" spacing={2} sx={{ pl: 2 }}>
-              <IconButton
-                component={motion.div}
-                variants={buttonAnimation}
-                whileHover="hover"
-                onClick={togglePlay}
-              >
-                {isPlaying ? (
-                  <Pause sx={{ fontSize: 50 }} />
-                ) : (
-                  <PlayArrow sx={{ fontSize: 50 }} />
-                )}
-              </IconButton>
-              <IconButton
-                component={motion.div}
-                variants={buttonAnimation}
-                whileHover="hover"
-                onClick={handleSkipBack}
-              >
-                <Replay10 sx={{ fontSize: 50 }} />
-              </IconButton>
-              <IconButton
-                component={motion.div}
-                variants={buttonAnimation}
-                whileHover="hover"
-                onClick={handleSkipForward}
-              >
-                <Forward10 sx={{ fontSize: 50 }} />
-              </IconButton>
-
-              <Box
-                sx={{
-                  "&:hover #volume-slider": {
-                    display: "block",
-                  },
-                }}
-              >
-                <Box
-                  id="volume-slider"
-                  sx={{
-                    backgroundColor: "#424242",
-                    height: 150,
-                    position: "absolute",
-                    transform: "translate(30%, -100%)",
-                    py: 4,
-                    px: 1,
-                    borderRadius: 1,
-                    display: "none",
-                  }}
-                >
-                  <Slider
-                    aria-label="Volume"
-                    value={volume}
-                    orientation="vertical"
-                    onChange={(e) => handleVolumeChange(e)}
-                    min={0}
-                    step={0.01}
-                    max={1}
-                    sx={{
-                      color: "#E50914",
-
-                      "& .MuiSlider-track": {
-                        border: "none",
-                      },
-                      "& .MuiSlider-rail": {
-                        opacity: 0.5,
-                        backgroundColor: "#bfbfbf",
-                      },
-                    }}
-                  />
-                </Box>
-                <IconButton
-                  component={motion.div}
-                  variants={buttonAnimation}
-                  whileHover="hover"
-                >
-                  {resolveVolumeIcon()}
-                </IconButton>
-              </Box>
-
-              <Typography variant="h5" sx={{ pt: 2, fontWeight: "light" }}>
-                Culture Capture Prototype
-              </Typography>
-            </Stack>
-
+          <Stack direction="row" spacing={2} sx={{ pl: 2 }}>
             <IconButton
               component={motion.div}
               variants={buttonAnimation}
               whileHover="hover"
-              onClick={openFullscreen}
-              sx={{ pr: 3 }}
+              onClick={togglePlay}
             >
-              {isFullscreen ? (
-                <FullscreenExit sx={{ fontSize: 50 }} />
+              {isPlaying ? (
+                <Pause sx={{ fontSize: 50 }} />
               ) : (
-                <Fullscreen sx={{ fontSize: 50 }} />
+                <PlayArrow sx={{ fontSize: 50 }} />
               )}
             </IconButton>
+            <IconButton
+              component={motion.div}
+              variants={buttonAnimation}
+              whileHover="hover"
+              onClick={handleSkipBack}
+            >
+              <Replay10 sx={{ fontSize: 50 }} />
+            </IconButton>
+            <IconButton
+              component={motion.div}
+              variants={buttonAnimation}
+              whileHover="hover"
+              onClick={handleSkipForward}
+            >
+              <Forward10 sx={{ fontSize: 50 }} />
+            </IconButton>
+
+            <Box
+              sx={{
+                "&:hover #volume-slider": {
+                  display: "block",
+                },
+              }}
+            >
+              <Box
+                id="volume-slider"
+                sx={{
+                  backgroundColor: "#424242",
+                  height: 150,
+                  position: "absolute",
+                  transform: "translate(30%, -100%)",
+                  py: 4,
+                  px: 1,
+                  borderRadius: 1,
+                  display: "none",
+                }}
+              >
+                <Slider
+                  aria-label="Volume"
+                  value={volume}
+                  orientation="vertical"
+                  onChange={(e) => handleVolumeChange(e)}
+                  min={0}
+                  step={0.01}
+                  max={1}
+                  sx={{
+                    color: "#E50914",
+
+                    "& .MuiSlider-track": {
+                      border: "none",
+                    },
+                    "& .MuiSlider-rail": {
+                      opacity: 0.5,
+                      backgroundColor: "#bfbfbf",
+                    },
+                  }}
+                />
+              </Box>
+              <IconButton
+                component={motion.div}
+                variants={buttonAnimation}
+                whileHover="hover"
+              >
+                {resolveVolumeIcon()}
+              </IconButton>
+            </Box>
+
+            <Typography variant="h5" sx={{ pt: 2, fontWeight: "light" }}>
+              Culture Capture Prototype
+            </Typography>
           </Stack>
-        </Box>
-      )}
+
+          <IconButton
+            component={motion.div}
+            variants={buttonAnimation}
+            whileHover="hover"
+            onClick={openFullscreen}
+            sx={{ pr: 3 }}
+          >
+            {isFullscreen ? (
+              <FullscreenExit sx={{ fontSize: 50 }} />
+            ) : (
+              <Fullscreen sx={{ fontSize: 50 }} />
+            )}
+          </IconButton>
+        </Stack>
+      </Box>
+      )
     </Box>
   );
 };
