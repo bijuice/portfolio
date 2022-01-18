@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import useWindowDimensions from "../utilities/useWindowDimensions";
 
 const SkillsPage = () => {
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -41,6 +41,7 @@ const SkillsPage = () => {
               index={index}
               key={skill.id}
               width={width}
+              height={height}
             />
           );
         })}

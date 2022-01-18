@@ -8,7 +8,7 @@ import { skills } from "../../data";
 import useWindowDimensions from "../../utilities/useWindowDimensions";
 
 const Skills = () => {
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   const resolveCardSpacing = () => {
     if (width < 862) {
@@ -97,6 +97,7 @@ const Skills = () => {
                 index={index}
                 key={skill.id}
                 width={width}
+                height={height}
               />
             );
           })}

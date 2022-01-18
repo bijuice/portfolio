@@ -113,12 +113,6 @@ const VideoPlayer = () => {
     );
   }, []);
 
-  const [showAction, setShowAction] = useState(false);
-
-  const resolveShowAction = () => {
-    setShowAction(true);
-  };
-
   return (
     <Box
       component={motion.div}

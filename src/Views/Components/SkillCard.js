@@ -2,8 +2,8 @@ import { Card, Box, Typography, Grid } from "@mui/material";
 import { cardAnimation } from "../../preferences/animationPrefs";
 import { motion } from "framer-motion";
 
-const SkillCard = ({ skill, index, width }) => {
-  //decides responsive values
+const SkillCard = ({ skill, index, width, height }) => {
+  //decides card with responsive values
   const resolveCardWidth = () => {
     if (width < 862) {
       return width * 0.29;
@@ -29,9 +29,8 @@ const SkillCard = ({ skill, index, width }) => {
     <Grid item>
       <Card
         sx={{
-          height: 135,
+          height: 145,
           width: resolveCardWidth(width),
-          minWidth: 200,
           boxShadow: 20,
           transition: "0.4s",
           zIndex: 1,
@@ -39,9 +38,8 @@ const SkillCard = ({ skill, index, width }) => {
           borderRadius: 0,
 
           "&:hover": {
-            height: 250,
-            width: 350,
-            maxWidth: 400,
+            height: height * 0.32,
+            width: resolveCardWidth() * 1.6,
             position: "absolute",
             zIndex: 4,
             transform: transformDecider(),

@@ -28,7 +28,7 @@ const ccDetails = {
     { title: "Figma", icon: figma },
   ],
   description:
-    "Culture Capture is a social digital museum which gamifies anthropology.",
+    "<p> Culture Capture is a social digital museum with gamification aspects. The platform aims to preserve native cultures by encouraging users to upload pictures, audio and video of their culture's food, dances, and rituals. </p>  <p> This platform was designed using Figma. The mobile apps are currently being created using Dart and Flutter for iOS and Android, while using Firebase as a 'backend as a service' </p>",
   videos: [
     {
       title: "Culture Capture Prototype",

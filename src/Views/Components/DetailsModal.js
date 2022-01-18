@@ -262,7 +262,7 @@ const DetailsModal = ({ open, handleClose, details }) => {
               <Grid container sx={{ pt: 2, pb: 5, pl: 1 }}>
                 {details.links.map((link) => {
                   return (
-                    <Grid item sx={{ mr: 2 }}>
+                    <Grid item sx={{ mr: 2 }} key={link.url}>
                       <Button
                         size="small"
                         sx={{

@@ -9,6 +9,12 @@ import ProjectsPage from "./Views/ProjectsPage";
 import { AnimatePresence } from "framer-motion";
 import VideoPlayer from "./Views/VideoPlayer";
 import { Box, Typography } from "@mui/material";
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile,
+} from "react-device-detect";
 
 const theme = createTheme({
   palette: {
@@ -43,27 +49,53 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ bacgroundColor: "black", height: "100vh" }}>
-        {showNav() && <Navbar />}
+      {isBrowser && (
+        <BrowserView>
+          <Box
+            sx={{ bacgroundColor: "black", height: "100vh", width: "100vw" }}
+          >
+            {showNav() && <Navbar />}
 
-        <AnimatePresence>
-          <Routes location={location} key={location.key}>
-            <Route path="/" element={<Home />} />
-            <Route path="/skills" element={<SkillsPage />} />
-            <Route path="/experience" element={<ExperiencePage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/video" element={<VideoPlayer />} />
-          </Routes>
-        </AnimatePresence>
-        {showNav() && (
-          <Box sx={{ mb: 5, borderTop: "1px solid #424242" }}>
-            <Typography variant="subtitle1" sx={{ pt: 5, pl: 7, pb: 3 }}>
-              {" "}
-              Made with ❤️ & 🐈 by Abdul Rahman Rehmtulla
-            </Typography>
+            <AnimatePresence>
+              <Routes location={location} key={location.key}>
+                <Route path="/" element={<Home />} />
+                <Route path="/skills" element={<SkillsPage />} />
+                <Route path="/experience" element={<ExperiencePage />} />
+                <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="/video" element={<VideoPlayer />} />
+              </Routes>
+            </AnimatePresence>
+            {showNav() && (
+              <Box sx={{ mb: 5, borderTop: "1px solid #424242" }}>
+                <Typography variant="subtitle1" sx={{ pt: 5, pl: 7, pb: 3 }}>
+                  {" "}
+                  Made with ❤️ & 🐈 by Abdul Rahman Rehmtulla
+                </Typography>
+              </Box>
+            )}
           </Box>
-        )}
-      </Box>
+        </BrowserView>
+      )}
+
+      {isMobile && (
+        <MobileView>
+          <div
+            style={{
+              width: "100vw",
+              height: "100vh",
+              color: "white",
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+          >
+            <p>
+              Bijuiceflix for mobile is still under construction. Visit this
+              site on the web for the full experience :)
+            </p>
+          </div>
+        </MobileView>
+      )}
     </ThemeProvider>
   );
 }
