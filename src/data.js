@@ -91,7 +91,7 @@ export const experience = [
     links: [
       {
         title: "Website",
-        url: "https://www.hisa.co",
+        url: "https://hisa.co/",
       },
     ],
     description:
@@ -236,7 +236,7 @@ export const projects = [
     links: [
       {
         title: "Website",
-        url: "https://www.hisa.co",
+        url: "https://hisa.co/",
       },
     ],
     description:
