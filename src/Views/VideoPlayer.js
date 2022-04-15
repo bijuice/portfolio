@@ -28,12 +28,12 @@ import { motion } from "framer-motion";
 import { routeAnimation, buttonAnimation } from "../preferences/animationPrefs";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDX9SqhsmeGCewl5GfEXfgkOrWhef0zAwA",
-  authDomain: "aflix-b9083.firebaseapp.com",
-  projectId: "aflix-b9083",
-  storageBucket: "aflix-b9083.appspot.com",
-  messagingSenderId: "166210509379",
-  appId: "1:166210509379:web:c4ead3d72c78e72a24d2f6",
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
 };
 
 const VideoPlayer = () => {
