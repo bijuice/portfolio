@@ -28,12 +28,12 @@ import { motion } from "framer-motion";
 import { routeAnimation, buttonAnimation } from "../preferences/animationPrefs";
 
 const firebaseConfig = {
-  apiKey: process.env.API_KEY,
-  authDomain: process.env.AUTH_DOMAIN,
-  projectId: process.env.PROJECT_ID,
-  storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MESSAGING_SENDER_ID,
-  appId: process.env.APP_ID,
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 };
 
 const VideoPlayer = () => {
@@ -42,6 +42,8 @@ const VideoPlayer = () => {
   const { width, height } = useWindowDimensions();
 
   useEffect(() => {
+    console.log(firebaseConfig);
+
     const firebaseApp = initializeApp(firebaseConfig);
     const storage = getStorage(firebaseApp);
 
