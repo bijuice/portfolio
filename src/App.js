@@ -1,20 +1,20 @@
-import Home from "./Views/Home/Home";
-import { createTheme } from "@mui/material/styles";
-import { ThemeProvider } from "@emotion/react";
-import { Routes, Route, useLocation } from "react-router-dom";
-import Navbar from "./Views/Home/Navbar";
-import SkillsPage from "./Views/SkillsPage";
-import ExperiencePage from "./Views/ExperiencePage";
-import ProjectsPage from "./Views/ProjectsPage";
-import { AnimatePresence } from "framer-motion";
-import VideoPlayer from "./Views/VideoPlayer";
-import { Box, Typography } from "@mui/material";
+import Home from "./Views/Home/Home"
+import { createTheme } from "@mui/material/styles"
+import { ThemeProvider } from "@emotion/react"
+import { Routes, Route, useLocation } from "react-router-dom"
+import Navbar from "./Views/Home/Navbar"
+import SkillsPage from "./Views/SkillsPage"
+import ExperiencePage from "./Views/ExperiencePage"
+import ProjectsPage from "./Views/ProjectsPage"
+import { AnimatePresence } from "framer-motion/dist/framer-motion"
+import VideoPlayer from "./Views/VideoPlayer"
+import { Box, Typography } from "@mui/material"
 import {
   BrowserView,
   MobileView,
   isBrowser,
   isMobile,
-} from "react-device-detect";
+} from "react-device-detect"
 
 const theme = createTheme({
   palette: {
@@ -34,18 +34,18 @@ const theme = createTheme({
       fontWeight: "bold",
     },
   },
-});
+})
 
 function App() {
-  const location = useLocation();
+  const location = useLocation()
 
   const showNav = () => {
     if (location.pathname === "/video") {
-      return false;
+      return false
     } else {
-      return true;
+      return true
     }
-  };
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -97,7 +97,7 @@ function App() {
         </MobileView>
       )}
     </ThemeProvider>
-  );
+  )
 }
 
-export default App;
+export default App
