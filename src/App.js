@@ -6,7 +6,7 @@ import Navbar from "./Views/Home/Navbar";
 import SkillsPage from "./Views/SkillsPage";
 import ExperiencePage from "./Views/ExperiencePage";
 import ProjectsPage from "./Views/ProjectsPage";
-import { AnimatePresence, motion } from "framer-motion/dist/framer-motion";
+import { AnimatePresence } from "framer-motion/dist/framer-motion";
 import VideoPlayer from "./Views/VideoPlayer";
 import { Box, Typography } from "@mui/material";
 import {
