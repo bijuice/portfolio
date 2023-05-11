@@ -1,4 +1,4 @@
-# Fullstack Diction Scraper
+# Portfolio v1
 
 You can try out this web app using this link : http://bijuiceflix.herokuapp.com/
 
