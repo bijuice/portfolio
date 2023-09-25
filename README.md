@@ -1,7 +1,5 @@
 # Portfolio v1
 
-You can try out this web app using this link : http://bijuiceflix.herokuapp.com/
-
 ## Description:
 
 This is a Netflix inspired portfolio used to showcase my skills, experience, and personal projects. This app is primarily made using React.
